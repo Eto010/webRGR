@@ -1,20 +1,25 @@
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+import { Routes, Route } from 'react-router-dom';
+import PrivateRoute from './components/PrivateRoute';
+import Header from './components/Header';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
+import HomePage from './pages/HomePage';
+import UploadPage from './pages/UploadPage';
+import VideoPlayerPage from './pages/VideoPlayerPage';
 
 function App() {
-  const [status, setStatus] = useState('');
-
-  useEffect(() => {
-    axios.get('http://localhost:8000/api/health/')
-      .then(res => setStatus(res.data.status))
-      .catch(err => console.error(err));
-  }, []);
-
-  return <div>Backend status: {status}</div>;
+  return (
+    <>
+      <Header />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/video/:id" element={<VideoPlayerPage />} />
+        <Route path="/upload" element={<PrivateRoute><UploadPage /></PrivateRoute>} />
+      </Routes>
+    </>
+  );
 }
 
 export default App;

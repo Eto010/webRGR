@@ -1,12 +1,12 @@
 # Fdb version 4
-["xdvipdfmx"] 1782038798.80783 "webrgr.xdv" "webrgr.pdf" "webrgr" 1782038799.74572 0
-  "webrgr.xdv" 1782038798.71924 41172 108a68c033b357b2bbedf32db8e773e0 "xelatex"
+["xdvipdfmx"] 1782038990.37123 "webrgr.xdv" "webrgr.pdf" "webrgr" 1782038991.37595 0
+  "webrgr.xdv" 1782038990.28582 41184 aaa7073fc9da9ea60132ab0b52dc8196 "xelatex"
   (generated)
   "webrgr.pdf"
   (rewritten before read)
-["xelatex"] 1782038795.21323 "/home/vlad/webRGR/latex/webrgr.tex" "webrgr.xdv" "webrgr" 1782038799.74456 0
+["xelatex"] 1782038986.2223 "/home/vlad/webRGR/latex/webrgr.tex" "webrgr.xdv" "webrgr" 1782038991.37434 0
   "/etc/texmf/web2c/texmf.cnf" 1774878760.01786 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/vlad/webRGR/latex/webrgr.tex" 1782038794.97912 8968 f54df21eb449839bd2bc6fad0ea620f8 ""
+  "/home/vlad/webRGR/latex/webrgr.tex" 1782038985.93635 8970 c90926042b829527c18aaca195287534 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1136768653 1528 f853c4d1b4e0550255e02831fdc8496f ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm" 1136768653 1524 4414a8315f39513458b80dfc63bff03a ""
@@ -94,10 +94,10 @@
   "images/rp.png" 1782037251.02027 48005 69bee7224d30fa876f6ccf48bdfeff7e ""
   "images/up.png" 1782037204.67036 48276 87220e8c3c0284b8b367861bd7a98cec ""
   "images/vp.png" 1782037204.94902 1225560 c27cacaa49afd4fe8e2e60f533b79d16 ""
-  "webrgr.aux" 1782038798.71924 3320 b3d32bd2f558519ebe28942c2051839c "xelatex"
-  "webrgr.out" 1782038798.71924 746 a7494577c3fe7952ba2e6652d890890c "xelatex"
-  "webrgr.tex" 1782038794.97912 8968 f54df21eb449839bd2bc6fad0ea620f8 ""
-  "webrgr.toc" 1782038798.71924 576 54264aa54c9a2cfc74984b53e59582e8 "xelatex"
+  "webrgr.aux" 1782038990.28189 3320 b3d32bd2f558519ebe28942c2051839c "xelatex"
+  "webrgr.out" 1782038990.28582 746 a7494577c3fe7952ba2e6652d890890c "xelatex"
+  "webrgr.tex" 1782038985.93635 8970 c90926042b829527c18aaca195287534 ""
+  "webrgr.toc" 1782038990.28582 576 54264aa54c9a2cfc74984b53e59582e8 "xelatex"
   (generated)
   "webrgr.aux"
   "webrgr.log"

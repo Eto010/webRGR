@@ -1,0 +1,10 @@
+\xpginauxfiletrue 
+\selectlanguage *[indentfirst=true]{russian}
+\contentsline {chapter}{Оглавление}{2}{section*.1}%
+\contentsline {section}{ВВЕДЕНИЕ}{3}{chapter*.2}%
+\contentsline {chapter}{\chapternumberline {1}FRONTEND}{4}{chapter.1}%
+\contentsline {chapter}{\chapternumberline {2}BACKEND}{5}{chapter.2}%
+\contentsline {chapter}{\chapternumberline {3}ПРИМЕРЫ}{6}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Ссылки}{6}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Изображения}{6}{section.3.2}%
+\xpginauxfilefalse 

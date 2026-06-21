@@ -17,7 +17,7 @@ const VideoPlayerPage = () => {
   if (loading) return <div className="container">Загрузка...</div>;
   if (!video) return <div className="container">Видео не найдено</div>;
 
-  const streamUrl = `http://localhost:8000/api/videos/stream/${id}/`;
+  const streamUrl = `http://192.168.8.1/api/videos/stream/${id}/`;
 
   return (
     <div className="container" style={{ maxWidth: 1000, margin: '40px auto' }}>

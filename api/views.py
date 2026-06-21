@@ -1,9 +1,9 @@
 import os
 import re
+import mimetypes
 from django.views import View
 from django.http import JsonResponse, HttpResponse, Http404
 from rest_framework import viewsets, permissions, generics
-from rest_framework.decorators import action
 from rest_framework.response import Response
 from django.contrib.auth import get_user_model
 
@@ -12,11 +12,11 @@ from .serializers import VideoSerializer, RegisterSerializer
 
 User = get_user_model()
 
-# Health check
+
 def health_check(request):
     return JsonResponse({'status': 'ok'})
 
-# Video CRUD
+
 class VideoViewSet(viewsets.ModelViewSet):
     queryset = Video.objects.all().order_by('-uploaded_at')
     serializer_class = VideoSerializer
@@ -25,50 +25,40 @@ class VideoViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         serializer.save(uploader=self.request.user)
 
-# Video streaming with range requests
+
 class StreamVideoView(View):
     def get(self, request, video_id):
-        video = Video.objects.get(id=video_id)
+        try:
+            video = Video.objects.get(id=video_id)
+        except Video.DoesNotExist:
+            return HttpResponse(status=404)
+
         video_path = video.video_file.path
+
         if not os.path.exists(video_path):
-            raise Http404
+            return HttpResponse(status=404)
 
-        stat = os.stat(video_path)
-        file_size = stat.st_size
-        range_header = request.headers.get('Range', None)
+        content_type, _ = mimetypes.guess_type(video_path)
+        if not content_type:
+            content_type = 'video/mp4'
 
-        if range_header:
-            m = re.search(r'bytes=(\d+)-(\d*)', range_header)
-            if m:
-                start = int(m.group(1))
-                end = int(m.group(2)) if m.group(2) else file_size - 1
-                if start >= file_size or end >= file_size:
-                    return HttpResponse(status=416)
-                length = end - start + 1
-                response = HttpResponse(status=206)
-                response['Content-Range'] = f'bytes {start}-{end}/{file_size}'
-                response['Content-Length'] = str(length)
-                with open(video_path, 'rb') as f:
-                    f.seek(start)
-                    response.write(f.read(length))
-            else:
-                return HttpResponse(status=400)
-        else:
-            response = HttpResponse(status=200)
-            response['Content-Length'] = str(file_size)
+        try:
             with open(video_path, 'rb') as f:
-                response.write(f.read())
+                file_data = f.read()
+        except Exception as e:
+            return HttpResponse(f"Error reading file: {str(e)}", status=500)
 
-        response['Content-Type'] = 'video/mp4'
+        response = HttpResponse(file_data, content_type=content_type)
         response['Accept-Ranges'] = 'bytes'
         return response
 
-# User registration
+
 class RegisterView(generics.CreateAPIView):
     permission_classes = [permissions.AllowAny]
     serializer_class = RegisterSerializer
 
     def post(self, request, *args, **kwargs):
+        print("Received data:", request.data)  # ← добавить для отладки
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         user = serializer.save()

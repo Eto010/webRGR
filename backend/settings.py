@@ -60,8 +60,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'videoplatform',
-        'USER': 'myuser',
-        'PASSWORD': 'mypassword',
+        'USER': 'eto',
+        'PASSWORD': '25042007',
         'HOST': 'localhost',
         'PORT': '5432',
     }
@@ -91,7 +91,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = 'static/'
-
+STATIC_ROOT = '/var/www/videoplatform/staticfiles/'
 # Media files (uploaded videos)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
@@ -111,6 +111,15 @@ REST_FRAMEWORK = {
 
 # CORS
 CORS_ALLOWED_ORIGINS = [
+    "http://192.168.8.1",
     "http://localhost:5173",
-    "http://127.0.0.1:5173",
+    "http://localhost:8000",
 ]
+CORS_ALLOW_CREDENTIALS = True
+
+
+DATA_UPLOAD_MAX_MEMORY_SIZE = 1048576000  # 1000 MB
+FILE_UPLOAD_MAX_MEMORY_SIZE = 1048576000  # 1000 MB
+
+# Для больших файлов можно использовать временные файлы на диске
+FILE_UPLOAD_TEMP_DIR = '/var/www/videoplatform/tmp/'
